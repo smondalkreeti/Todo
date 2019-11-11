@@ -6,8 +6,6 @@ module SessionsHelper
   def authenticate_user
     if session[:user_id].nil?
       redirect_to(login_path, flash: { error: "You need to login first" })
-    elsif params[:id]==session[:user_id] || params[:user_id] == session[:user_id]
-      redirect_back(fallback_path, flash: {error: "You are not authenticated to this page"})
     else
       current_user
     end
