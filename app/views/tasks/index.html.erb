@@ -1,0 +1,35 @@
+<h2>All Todos</h2>
+
+<%= form_tag(url: user_tasks_path) do |f| %>
+  <%= label_tag :date %>
+  <%= date_field_tag :date, params[:date] %>
+  <%= submit_tag "Search tasks on date" %>
+<% end %>
+
+<br />
+<br />
+
+<table border=2 cellpadding=5 >
+  <thead>
+    <th>Description</th>
+    <th>Scheduled Date</th>
+    <th>Status</th>
+    <th colspan=2 ></th>
+  </thead>
+  <tbody>
+    <% @tasks.each do |task| %>
+      <tr>
+        <td><%= task.description %></td>
+        <td><%= task.scheduled %></td>
+        <% if task.status %>
+          <td>Done</td>
+        <% else %>
+          <td>Undone</td>
+        <% end %>
+        <td><%= link_to "Edit task", edit_user_task_path(current_user, task) %></td>
+        <td><%= link_to "Delete task", user_task_path(current_user, task), method: :delete, data: { confirm: "Are you sure to delete ?" } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= link_to "Add New Todo", new_user_task_path %>

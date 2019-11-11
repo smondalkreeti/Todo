@@ -1,0 +1,8 @@
+<% if target.errors.present? %>
+  <div><%= "Form contains #{target.errors.size} #{"error".pluralize(target.errors.size)}" %></div>
+  <ul>
+    <% target.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+  </ul>
+<% end %>

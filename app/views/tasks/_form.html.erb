@@ -1,0 +1,18 @@
+<%= render(partial: "shared/error_messages", locals: { target: @task }) %>
+<%= form_for([current_user, @task]) do |f| %>
+  </div>
+    <%= f.label :description, "Description" %>
+    <%= f.text_area :description, placeholder: "Enter description" %>
+  </div>
+  <div>
+    <%= f.label :scheduled, "Enter date to be scheduled" %>
+    <%= f.date_field :scheduled %>
+  </div>
+  <div>
+    <%= f.label :status, "Mark as done" %>
+    <%= f.check_box :status %>
+  </div>
+  <div>
+    <%= f.submit %>
+  </div>
+<% end %>
